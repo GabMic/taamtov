@@ -1,0 +1,8 @@
+@yield('meta-description')
+@yield('description')
+@yield('ogtitle')
+@yield('ogurl')
+@yield('ogdescription')
+@yield('ogimage')
+@yield('ogtype')
+@yield('oglocale')
