@@ -1,5 +1,17 @@
-<nav class="level" style="margin-bottom: 0.3rem; margin-top: 0.5rem;">
-    <p class="level-item has-text-centered">
+<nav class="level mt05 mb03">
+    <div class="level-item has-text-centered">
         <a href="{{route('home')}}"><img src="{{asset('storage/icons/tticonblackred.png')}}"></a>
-    </p>
+    </div>
 </nav>
+@guest
+<nav class="breadcrumb has-bullet-separator is-medium is-centered" aria-label="breadcrumbs">
+    <ul>
+            <li><a href="{{ route('login') }}">התחברות</a></li>
+            <li><a  href="{{ route('register') }}">הרשמה חינם</a></li>
+    </ul>
+</nav>
+@endguest
+
+@auth
+<user-tabs></user-tabs>
+@endauth

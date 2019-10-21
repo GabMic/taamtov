@@ -10,6 +10,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function getRouteKeyName()
+    {
+        return 'user_name';
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'email', 'email_verified_at',
     ];
 
     /**

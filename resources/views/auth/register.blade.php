@@ -52,7 +52,7 @@
                                 @csrf
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" type="text" name="name" id="name" placeholder="שם מלא"  value="{{ old('name') }}">
+                                        <input class="input is-large @error('name') is-danger @enderror" type="text" name="name" id="name" placeholder="שם מלא"  value="{{ old('name') }}">
                                     </div>
                                     @if ($errors->has('name'))
                                         <p class="help is-danger">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" type="text" name="user_name" id="user_name" placeholder="שם משתמש"  value="{{ old('user_name') }}">
+                                        <input class="input is-large @error('user_name') is-danger @enderror" type="text" name="user_name" id="user_name" placeholder="שם משתמש"  value="{{ old('user_name') }}">
                                     </div>
                                     @if ($errors->has('user_name'))
                                         <p class="help is-danger">
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" type="email" name="email" id="email" placeholder="דואר אלקטרוני"  value="{{ old('email') }}">
+                                        <input class="input is-large @error('email') is-danger @enderror" type="email" name="email" id="email" placeholder="דואר אלקטרוני"  value="{{ old('email') }}">
                                     </div>
                                     @if ($errors->has('email'))
                                         <p class="help is-danger">
@@ -83,7 +83,7 @@
 
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" id="password" type="password" autocomplete="password" placeholder="סיסמה"  name="password">
+                                        <input class="input is-large @error('password') is-danger @enderror" id="password" type="password" autocomplete="password" placeholder="סיסמה"  name="password">
                                     </div>
                                     @if ($errors->has('password'))
                                         <p class="help is-danger">

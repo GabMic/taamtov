@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Recipe;
+use App\User;
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class UserController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('password.confirm')->only('edit');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -41,10 +46,10 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Recipe  $recipe
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show(User $user)
     {
         //
     }
@@ -52,22 +57,22 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Recipe  $recipe
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipe $recipe)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Recipe  $recipe
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -75,10 +80,10 @@ class RecipeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Recipe  $recipe
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipe $recipe)
+    public function destroy(User $user)
     {
         //
     }

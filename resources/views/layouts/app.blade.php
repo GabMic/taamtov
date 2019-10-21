@@ -14,6 +14,12 @@
             enable_page_level_ads: true
         });
     </script>
+    <script>
+        window.taamtovUser = {!! json_encode([
+            'user' => Auth::user(),
+            'signedIn' => Auth::check()
+        ]) !!};
+    </script>
     <title>@yield('title')</title>
     @include('partials.meta')
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -23,7 +29,6 @@
 <body>
 <div id="app">
     @include('partials.icon-bar')
-     @include('partials.navbar')
     <main class="container">
         @yield('content')
     </main>

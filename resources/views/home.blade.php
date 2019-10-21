@@ -1,10 +1,6 @@
 @extends('layouts.app')
-@section('title', 'דף הבית')
+@section('title', 'בלוג עם טעם טוב - הבית שלכם למתכונים טעימים ומוצלחים')
 @section('content')
-    <div class="container">
-        <div class="columns is-marginless is-centered">
-            <div class="column is-7">
-            </div>
+            <recipe-cards :recipes="{{$recipes}}"></recipe-cards>
         </div>
-    </div>
 @endsection
