@@ -1912,7 +1912,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['recipes']
+  props: ['recipes'],
+  data: function data() {
+    return {
+      isLiked: false
+    };
+  },
+  mounted: function mounted() {
+    window.taamtov.likedRecipesIds.includes(index) ? this.isLiked = true : this.isLiked = false;
+  }
 });
 
 /***/ }),
@@ -15752,16 +15760,7 @@ var render = function() {
       return _c(
         "div",
         { key: index, staticClass: "column is-4" },
-        [
-          _c("recipe-card", {
-            attrs: {
-              recipe: recipe,
-              liked: _vm.window.taamtov.likedRecipesIds.includes(index)
-                ? true
-                : false
-            }
-          })
-        ],
+        [_c("recipe-card", { attrs: { recipe: recipe, liked: _vm.isLiked } })],
         1
       )
     }),

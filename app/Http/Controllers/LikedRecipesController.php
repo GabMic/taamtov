@@ -21,7 +21,7 @@ class LikedRecipesController extends Controller
      */
     public function index()
     {
-        $likedRecipesIds = Like::whereUserId(auth()->id())->get(['likeable_id'])->values();
+        $likedRecipesIds = Like::whereUserId(auth()->id())->get(['likeable_id'])->values()->toArray();
 
         return Recipe::find($likedRecipesIds);
     }
