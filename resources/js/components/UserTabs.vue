@@ -8,7 +8,7 @@
                 <b-tab-item label="שמורים">
                     <div class="columns is-multiline">
                         <div class="column is-3" v-for="(likedRecipe, index) in likedRecipes" :key="index">
-                          <recipe-card :recipe="likedRecipe" :liked="true"></recipe-card>
+                          <recipe-card :recipe="likedRecipe" :liked="liked"></recipe-card>
                         </div>
                     </div>
                 </b-tab-item>
@@ -21,6 +21,7 @@
 
 <script>
     export default {
+        props: ['liked'],
         data() {
             return {
                 show: false,
@@ -33,9 +34,9 @@
             showBar(){
                 this.show = !this.show;
                 if(this.show){
-                    this.value = "הסתר תפריט"
+                    this.menuButtonValue = "הסתר תפריט"
                 }else {
-                    this.value = "תפריט"
+                    this.menuButtonValue = "תפריט"
                 }
             },
             showLikedRecipes(){

@@ -4,7 +4,7 @@
     </div>
 </nav>
 @guest
-<nav class="breadcrumb has-bullet-separator is-medium is-centered" aria-label="breadcrumbs">
+<nav class="breadcrumb has-bullet-separator is-medium is-centered" aria-label="breadcrumbs" style="direction: ltr">
     <ul>
             <li><a href="{{ route('login') }}">התחברות</a></li>
             <li><a  href="{{ route('register') }}">הרשמה חינם</a></li>
@@ -13,5 +13,5 @@
 @endguest
 
 @auth
-<user-tabs></user-tabs>
+<user-tabs :liked="{{$liked}}"></user-tabs>
 @endauth

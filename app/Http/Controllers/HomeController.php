@@ -17,9 +17,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $likedRecipesIds = Like::whereUserId(auth()->id())->get(['likeable_id'])->values();
-        JavaScript::put(['likedRecipesIds' => $likedRecipesIds]);
-        $recipes = Recipe::wherePublished(1)->take(6)->get();
-        return view('home', compact('recipes'));
+        $liked = Recipe::find(Like::whereUserId(auth()->id())->get(['likeable_id'])->values())->pluck('id');
+
+        $recipes = Recipe::wherePublished(1)->take(12)->get();
+        return view('home', compact('recipes', 'liked'));
     }
 }

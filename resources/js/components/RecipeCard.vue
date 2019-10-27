@@ -13,7 +13,7 @@
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="title is-4">{{recipe.name}}</p>
+                    <h5 class="title is-5">{{recipe.name}}</h5>
                     <p class="subtitle is-6">מתכון מאת: {{recipe.user.name}}</p>
                 </div>
             </div>
@@ -29,19 +29,20 @@
 
 <script>
     export default {
-        props: ['recipe'],
+        props: ['recipe','liked'],
         data(){
             return{
-                likeIcon: "/storage/icons/like-blue.png",
-                liked: taamtov.likedRecipesIds
+                likeIcon: ""
             }
         },
 
         created(){
-
-            if(this.liked){
-                this.likeIcon = "/storage/icons/like.png";
+            if(this.liked.includes(this.recipe.id)){
+                this.likeIcon = "/storage/icons/like.png"
+            }else{
+                this.likeIcon = "/storage/icons/like-blue.png"
             }
+
         },
 
         methods: {
