@@ -42,12 +42,8 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="columns is-centered">
-                    <div class="column is-4">
+                    <div class="column is-5">
                         <p class="subtitle has-text-grey">הרשמה לאתר בלוג עם טעם טוב</p>
-                        <div class="box">
-                            <figure class="avatar">
-                                <img src="{{asset('storage/icons/login.png')}}">
-                            </figure>
                             <form class="login-form" method="POST" action="{{ route('register') }}">
                                 @csrf
                                 <div class="field">
@@ -98,7 +94,6 @@
                                 </div>
                                 <button class="button is-block is-danger is-large is-fullwidth is-outlined" type="submit">הרשמה</button>
                             </form>
-                        </div>
                     </div>
                 </div>
             </div>

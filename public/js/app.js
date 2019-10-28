@@ -1829,6 +1829,51 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AuthModal.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AuthModal.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AuthModal",
+  data: function data() {
+    return {
+      isComponentModalActive: false
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RecipeCard.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RecipeCard.vue?vue&type=script&lang=js& ***!
@@ -1867,11 +1912,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recipe', 'liked'],
   data: function data() {
     return {
-      likeIcon: ""
+      likeIcon: "",
+      signedIn: window.taamtovUser.signedIn,
+      isComponentModalActive: false
     };
   },
   created: function created() {
@@ -16153,6 +16223,86 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AuthModal.vue?vue&type=template&id=8062b4ec&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AuthModal.vue?vue&type=template&id=8062b4ec& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-modal",
+    {
+      attrs: {
+        active: _vm.isComponentModalActive,
+        "has-modal-card": "",
+        "aria-role": "dialog",
+        "aria-modal": ""
+      },
+      on: {
+        "update:active": function($event) {
+          _vm.isComponentModalActive = $event
+        }
+      }
+    },
+    [
+      _c("section", [
+        _c(
+          "div",
+          { staticClass: "modal-card m-1", staticStyle: { width: "auto" } },
+          [
+            _c("header", { staticClass: "modal-card-head" }, [
+              _c("h6", { staticClass: "subtitle is-6" }, [
+                _vm._v("התחברו או הרשמו כדי לאהוב מתכונים")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("section", { staticClass: "modal-card-body" }, [
+              _c("button", { staticClass: "button is-outlined is-info" }, [
+                _vm._v("כבר רשומים? התחברו")
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "button is-outlined is-info" }, [
+                _vm._v("הירשמו בחינם")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("footer", { staticClass: "modal-card-foot" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$parent.close()
+                    }
+                  }
+                },
+                [_vm._v("ביטול")]
+              )
+            ])
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RecipeCard.vue?vue&type=template&id=afd5292e&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RecipeCard.vue?vue&type=template&id=afd5292e& ***!
@@ -16168,47 +16318,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-content" }, [
-      _c("div", { staticClass: "media" }, [
-        _c("div", { staticClass: "media-left" }, [
-          _c("figure", { staticClass: "image is-48x48" }, [
-            _c("img", {
-              attrs: { src: _vm.likeIcon },
-              on: {
-                click: function($event) {
-                  return _vm.like(_vm.recipe)
-                }
-              }
-            })
+  return _c(
+    "div",
+    { staticClass: "card" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            active: _vm.isComponentModalActive,
+            "has-modal-card": "",
+            "aria-role": "dialog",
+            "aria-modal": ""
+          },
+          on: {
+            "update:active": function($event) {
+              _vm.isComponentModalActive = $event
+            }
+          }
+        },
+        [
+          _c("section", [
+            _c(
+              "div",
+              { staticClass: "modal-card m-1", staticStyle: { width: "auto" } },
+              [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("h6", { staticClass: "subtitle is-6" }, [
+                    _vm._v("התחברו או הירשמו כדי לסמן לייק למתכונים")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-outlined is-info",
+                      attrs: { href: "/login" }
+                    },
+                    [_vm._v("התחברו")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-outlined is-info",
+                      attrs: { href: "register" }
+                    },
+                    [_vm._v("הירשמו בחינם")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("footer", { staticClass: "modal-card-foot" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.isComponentModalActive = false
+                        }
+                      }
+                    },
+                    [_vm._v("ביטול")]
+                  )
+                ])
+              ]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-content" }, [
+        _c("div", { staticClass: "media" }, [
+          _c("div", { staticClass: "media-left" }, [
+            _c("figure", { staticClass: "image is-48x48" }, [
+              _vm.signedIn
+                ? _c("img", {
+                    attrs: { src: _vm.likeIcon },
+                    on: {
+                      click: function($event) {
+                        return _vm.like(_vm.recipe)
+                      }
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.signedIn
+                ? _c("img", {
+                    attrs: { src: "/storage/icons/like-blue.png" },
+                    on: {
+                      click: function($event) {
+                        _vm.isComponentModalActive = true
+                      }
+                    }
+                  })
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "media-content" }, [
+            _c("h5", { staticClass: "title is-5" }, [
+              _vm._v(_vm._s(_vm.recipe.name))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "subtitle is-6" }, [
+              _vm._v("מתכון מאת: " + _vm._s(_vm.recipe.user.name))
+            ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "media-content" }, [
-          _c("h5", { staticClass: "title is-5" }, [
-            _vm._v(_vm._s(_vm.recipe.name))
-          ]),
+        _c("div", { staticClass: "content" }, [
+          _vm._v(
+            "\n            " + _vm._s(_vm.recipe.description) + "\n            "
+          ),
+          _c("br"),
           _vm._v(" "),
-          _c("p", { staticClass: "subtitle is-6" }, [
-            _vm._v("מתכון מאת: " + _vm._s(_vm.recipe.user.name))
+          _c("time", { attrs: { datetime: "recipe.created_at" } }, [
+            _vm._v(_vm._s(_vm.recipe.created_at))
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v(
-          "\n            " + _vm._s(_vm.recipe.description) + "\n            "
-        ),
-        _c("br"),
-        _vm._v(" "),
-        _c("time", { attrs: { datetime: "recipe.created_at" } }, [
-          _vm._v(_vm._s(_vm.recipe.created_at))
-        ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -28461,6 +28697,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_UserTabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/UserTabs */ "./resources/js/components/UserTabs.vue");
 /* harmony import */ var _components_RecipeCards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/RecipeCards */ "./resources/js/components/RecipeCards.vue");
 /* harmony import */ var _components_RecipeCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/RecipeCard */ "./resources/js/components/RecipeCard.vue");
+/* harmony import */ var _components_AuthModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/AuthModal */ "./resources/js/components/AuthModal.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -28469,9 +28706,11 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(buefy__WEBPACK_IMPORTED_MODULE_1_
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('user-tabs', _components_UserTabs__WEBPACK_IMPORTED_MODULE_2__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('recipe-cards', _components_RecipeCards__WEBPACK_IMPORTED_MODULE_3__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('recipe-card', _components_RecipeCard__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('auth-modal', _components_AuthModal__WEBPACK_IMPORTED_MODULE_5__["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app'
 });
@@ -28511,6 +28750,75 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AuthModal.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/AuthModal.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AuthModal_vue_vue_type_template_id_8062b4ec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AuthModal.vue?vue&type=template&id=8062b4ec& */ "./resources/js/components/AuthModal.vue?vue&type=template&id=8062b4ec&");
+/* harmony import */ var _AuthModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AuthModal.vue?vue&type=script&lang=js& */ "./resources/js/components/AuthModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AuthModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AuthModal_vue_vue_type_template_id_8062b4ec___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AuthModal_vue_vue_type_template_id_8062b4ec___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AuthModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AuthModal.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/AuthModal.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AuthModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AuthModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AuthModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AuthModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AuthModal.vue?vue&type=template&id=8062b4ec&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/AuthModal.vue?vue&type=template&id=8062b4ec& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AuthModal_vue_vue_type_template_id_8062b4ec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AuthModal.vue?vue&type=template&id=8062b4ec& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AuthModal.vue?vue&type=template&id=8062b4ec&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AuthModal_vue_vue_type_template_id_8062b4ec___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AuthModal_vue_vue_type_template_id_8062b4ec___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -28757,8 +29065,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Gabriel\taamtov\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Gabriel\taamtov\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\GabMicDev\taamtov\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\GabMicDev\taamtov\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

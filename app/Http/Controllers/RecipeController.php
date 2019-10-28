@@ -14,7 +14,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-
+        return view('recipes.index', compact('recipes'));
     }
 
     /**
@@ -24,7 +24,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('recipes.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

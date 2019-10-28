@@ -5,11 +5,34 @@
                 <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
             </figure>
         </div>
+        <b-modal :active.sync="isComponentModalActive"
+                 has-modal-card
+                 aria-role="dialog"
+                 aria-modal>
+            <section>
+                <div class="modal-card m-1" style="width: auto">
+                    <header class="modal-card-head">
+                        <h6 class="subtitle is-6">התחברו או הירשמו כדי לסמן לייק למתכונים</h6>
+                    </header>
+                    <section class="modal-card-body">
+
+                        <a class="button is-outlined is-info" href="/login">התחברו</a>
+                        <a class="button is-outlined is-info" href="register">הירשמו בחינם</a>
+
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button" type="button" @click="isComponentModalActive = false">ביטול</button>
+                    </footer>
+                </div>
+
+            </section>
+        </b-modal>
         <div class="card-content">
             <div class="media">
                 <div class="media-left">
                     <figure class="image is-48x48">
-                        <img :src="likeIcon" @click="like(recipe)">
+                        <img :src="likeIcon" @click="like(recipe)" v-if="signedIn">
+                        <img src="/storage/icons/like-blue.png"  @click="isComponentModalActive = true" v-if="!signedIn">
                     </figure>
                 </div>
                 <div class="media-content">
@@ -32,7 +55,9 @@
         props: ['recipe','liked'],
         data(){
             return{
-                likeIcon: ""
+                likeIcon: "",
+                signedIn: window.taamtovUser.signedIn,
+                isComponentModalActive: false
             }
         },
 
