@@ -1863,12 +1863,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "AuthModal",
   data: function data() {
     return {
-      isComponentModalActive: false
+      isComponentModalActive: this.$attrs.isComponentModalActive
     };
+  },
+  mounted: function mounted() {
+    console.log(this.$attrs);
   }
 });
 
@@ -1913,35 +1916,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recipe', 'liked'],
   data: function data() {
     return {
       likeIcon: "",
-      signedIn: window.taamtovUser.signedIn,
-      isComponentModalActive: false
+      signedIn: window.taamtovUser.signedIn
     };
   },
   created: function created() {
@@ -1953,13 +1933,29 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     like: function like(recipe) {
-      axios.post("/like/".concat(recipe.slug), {
-        recipe: recipe
-      }).then(function (response) {
-        console.log(response);
-      });
+      var _this = this;
+
+      if (this.liked.includes(recipe.id)) {
+        this.unlike(recipe);
+      } else {
+        this.liked.push(recipe.id);
+        axios.post("/like/".concat(recipe.slug), {
+          recipe: recipe
+        }).then(function (response) {
+          _this.likeIcon = "/storage/icons/like.png";
+        });
+      }
     },
-    unlike: function unlike(recipe) {}
+    unlike: function unlike(recipe) {
+      var _this2 = this;
+
+      var id = recipe.likes[0].id;
+      console.log(this.liked, id);
+      axios["delete"]("/like/".concat(id)).then(function (response) {
+        console.log(response);
+        _this2.likeIcon = "/storage/icons/like-blue.png";
+      });
+    }
   }
 });
 
@@ -1982,8 +1978,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['recipes', 'liked']
+  props: ['recipes', 'liked'],
+  data: function data() {
+    return {
+      isComponentModalActive: false
+    };
+  }
 });
 
 /***/ }),
@@ -16318,133 +16343,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "b-modal",
-        {
-          attrs: {
-            active: _vm.isComponentModalActive,
-            "has-modal-card": "",
-            "aria-role": "dialog",
-            "aria-modal": ""
-          },
-          on: {
-            "update:active": function($event) {
-              _vm.isComponentModalActive = $event
-            }
-          }
-        },
-        [
-          _c("section", [
-            _c(
-              "div",
-              { staticClass: "modal-card m-1", staticStyle: { width: "auto" } },
-              [
-                _c("header", { staticClass: "modal-card-head" }, [
-                  _c("h6", { staticClass: "subtitle is-6" }, [
-                    _vm._v("התחברו או הירשמו כדי לסמן לייק למתכונים")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("section", { staticClass: "modal-card-body" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "button is-outlined is-info",
-                      attrs: { href: "/login" }
-                    },
-                    [_vm._v("התחברו")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "button is-outlined is-info",
-                      attrs: { href: "register" }
-                    },
-                    [_vm._v("הירשמו בחינם")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("footer", { staticClass: "modal-card-foot" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "button",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.isComponentModalActive = false
-                        }
-                      }
-                    },
-                    [_vm._v("ביטול")]
-                  )
-                ])
-              ]
-            )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-content" }, [
-        _c("div", { staticClass: "media" }, [
-          _c("div", { staticClass: "media-left" }, [
-            _c("figure", { staticClass: "image is-48x48" }, [
-              _vm.signedIn
-                ? _c("img", {
-                    attrs: { src: _vm.likeIcon },
-                    on: {
-                      click: function($event) {
-                        return _vm.like(_vm.recipe)
-                      }
+  return _c("div", { staticClass: "card" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-content" }, [
+      _c("div", { staticClass: "media" }, [
+        _c("div", { staticClass: "media-left" }, [
+          _c("figure", { staticClass: "image is-48x48" }, [
+            _vm.signedIn
+              ? _c("img", {
+                  attrs: { src: _vm.likeIcon },
+                  on: {
+                    click: function($event) {
+                      return _vm.like(_vm.recipe)
                     }
-                  })
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.signedIn
-                ? _c("img", {
-                    attrs: { src: "/storage/icons/like-blue.png" },
-                    on: {
-                      click: function($event) {
-                        _vm.isComponentModalActive = true
-                      }
-                    }
-                  })
-                : _vm._e()
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-content" }, [
-            _c("h5", { staticClass: "title is-5" }, [
-              _vm._v(_vm._s(_vm.recipe.name))
-            ]),
+                  }
+                })
+              : _vm._e(),
             _vm._v(" "),
-            _c("p", { staticClass: "subtitle is-6" }, [
-              _vm._v("מתכון מאת: " + _vm._s(_vm.recipe.user.name))
-            ])
+            !_vm.signedIn
+              ? _c("img", {
+                  attrs: { src: "/storage/icons/like-blue.png" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("isComponentModalActive", true)
+                    }
+                  }
+                })
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v(
-            "\n            " + _vm._s(_vm.recipe.description) + "\n            "
-          ),
-          _c("br"),
+        _c("div", { staticClass: "media-content" }, [
+          _c("h5", { staticClass: "title is-5" }, [
+            _vm._v(_vm._s(_vm.recipe.name))
+          ]),
           _vm._v(" "),
-          _c("time", { attrs: { datetime: "recipe.created_at" } }, [
-            _vm._v(_vm._s(_vm.recipe.created_at))
+          _c("p", { staticClass: "subtitle is-6" }, [
+            _vm._v("מתכון מאת: " + _vm._s(_vm.recipe.user.name))
           ])
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v(
+          "\n            " + _vm._s(_vm.recipe.description) + "\n            "
+        ),
+        _c("br"),
+        _vm._v(" "),
+        _c("time", { attrs: { datetime: "recipe.created_at" } }, [
+          _vm._v(_vm._s(_vm.recipe.created_at))
+        ])
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -16454,10 +16406,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-image" }, [
       _c("figure", { staticClass: "image is-4by3" }, [
         _c("img", {
-          attrs: {
-            src: "https://bulma.io/images/placeholders/1280x960.png",
-            alt: "Placeholder image"
-          }
+          attrs: { src: "/storage/photos/apples.jpg", alt: "Placeholder image" }
         })
       ])
     ])
@@ -16487,15 +16436,94 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "columns is-multiline", staticStyle: { direction: "rtl" } },
-    _vm._l(_vm.recipes, function(recipe, index) {
-      return _c(
-        "div",
-        { key: index, staticClass: "column is-3" },
-        [_c("recipe-card", { attrs: { recipe: recipe, liked: _vm.liked } })],
-        1
+    [
+      _vm._l(_vm.recipes, function(recipe, index) {
+        return _c(
+          "div",
+          { key: index, staticClass: "column is-3" },
+          [
+            _c("recipe-card", {
+              attrs: { recipe: recipe, liked: _vm.liked },
+              on: {
+                isComponentModalActive: function($event) {
+                  _vm.isComponentModalActive = true
+                }
+              }
+            })
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            active: _vm.isComponentModalActive,
+            "has-modal-card": "",
+            "aria-role": "dialog",
+            "aria-modal": ""
+          },
+          on: {
+            "update:active": function($event) {
+              _vm.isComponentModalActive = $event
+            }
+          }
+        },
+        [
+          _c("section", [
+            _c(
+              "div",
+              { staticClass: "modal-card m-1", staticStyle: { width: "auto" } },
+              [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("h6", { staticClass: "subtitle is-6" }, [
+                    _vm._v("התחברו או הרשמו כדי לאהוב מתכונים")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-link is-outlined is-info",
+                      attrs: { href: "/login" }
+                    },
+                    [_vm._v("כבר רשומים? התחברו")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-link is-outlined is-info",
+                      attrs: { href: "/register" }
+                    },
+                    [_vm._v("הירשמו בחינם")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("footer", { staticClass: "modal-card-foot" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.isComponentModalActive = false
+                        }
+                      }
+                    },
+                    [_vm._v("ביטול")]
+                  )
+                ])
+              ]
+            )
+          ])
+        ]
       )
-    }),
-    0
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -29065,8 +29093,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\GabMicDev\taamtov\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\GabMicDev\taamtov\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Gabriel\taamtov\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Gabriel\taamtov\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,13 +1,43 @@
 <template>
 <div class="columns is-multiline" style="direction: rtl">
     <div class="column is-3" v-for="(recipe, index) in recipes" :key="index" >
-          <recipe-card :recipe="recipe" :liked="liked"></recipe-card>
+          <recipe-card :recipe="recipe" :liked="liked" @isComponentModalActive="isComponentModalActive = true"></recipe-card>
     </div>
+
+        <b-modal :active.sync="isComponentModalActive"
+             has-modal-card
+             aria-role="dialog"
+             aria-modal
+             >
+        <section>
+            <div class="modal-card m-1" style="width: auto">
+                <header class="modal-card-head">
+                    <h6 class="subtitle is-6">התחברו או הרשמו כדי לאהוב מתכונים</h6>
+                </header>
+                <section class="modal-card-body">
+
+                    <a href="/login" class="button is-link is-outlined is-info">כבר רשומים? התחברו</a>
+                    <a href="/register" class="button is-link is-outlined is-info">הירשמו בחינם</a>
+
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button" type="button" @click="isComponentModalActive = false">ביטול</button>
+                </footer>
+            </div>
+
+        </section>
+    </b-modal>
 </div>
 </template>
 
 <script>
     export default {
-        props: ['recipes', 'liked']
+        props: ['recipes', 'liked'],
+
+        data(){
+            return{
+                isComponentModalActive: false
+            }
+        }
     }
 </script>

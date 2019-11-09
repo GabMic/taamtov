@@ -13,3 +13,5 @@ Route::resource('user', 'UserController');
 
 Route::post('/like/{recipe}', 'LikedRecipesController@store');
 Route::get('/liked-recipes', 'LikedRecipesController@index')->name('my-liked-recipes');
+
+Route::delete('/like/{id}', 'LikedRecipesController@destroy');

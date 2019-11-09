@@ -2,7 +2,8 @@
     <b-modal :active.sync="isComponentModalActive"
              has-modal-card
              aria-role="dialog"
-             aria-modal>
+             aria-modal
+             >
         <section>
             <div class="modal-card m-1" style="width: auto">
                 <header class="modal-card-head">
@@ -25,12 +26,14 @@
 
 <script>
     export default {
-        name: "AuthModal",
-
         data(){
             return{
-                isComponentModalActive: false
+                isComponentModalActive: this.$attrs.isComponentModalActive
             }
+        },
+
+        mounted(){
+            console.log(this.$attrs)
         }
     }
 </script>

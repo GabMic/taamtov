@@ -21,10 +21,10 @@ class Recipe extends Model
 
     public function like()
     {
-        $attributes = ['user_id' => auth()->id()];
+        $userId = ['user_id' => auth()->id()];
 
-        if(! $this->likes()->where($attributes)->exists()){
-           return $this->likes()->create($attributes);
+        if(! $this->likes()->where($userId)->exists()){
+           return $this->likes()->create($userId);
         }
     }
 
