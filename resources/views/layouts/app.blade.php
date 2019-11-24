@@ -29,6 +29,7 @@
 <body>
 <div id="app">
     @include('partials.icon-bar')
+    <search-box></search-box>
     <main class="container">
         @yield('content')
     </main>

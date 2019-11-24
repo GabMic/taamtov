@@ -13,5 +13,5 @@
 @endguest
 
 @auth
-<user-tabs :liked="{{$liked}}"></user-tabs>
+<user-tabs :liked="{{$liked ?? ''}}"></user-tabs>
 @endauth

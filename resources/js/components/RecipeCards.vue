@@ -1,5 +1,5 @@
 <template>
-<div class="columns is-multiline" style="direction: rtl">
+<div class="columns is-multiline m-1" style="direction: rtl">
     <div class="column is-3" v-for="(recipe, index) in recipes" :key="index" >
           <recipe-card :recipe="recipe" :liked="liked" @isComponentModalActive="isComponentModalActive = true"></recipe-card>
     </div>
@@ -16,12 +16,12 @@
                 </header>
                 <section class="modal-card-body">
 
-                    <a href="/login" class="button is-link is-outlined is-info">כבר רשומים? התחברו</a>
-                    <a href="/register" class="button is-link is-outlined is-info">הירשמו בחינם</a>
+                    <a href="/login">התחברו</a> או
+                    <a href="/register">הירשמו חינם</a>
 
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button" type="button" @click="isComponentModalActive = false">ביטול</button>
+                    <button class="button is-dark is-outlined is-fullwidth" type="button" @click="isComponentModalActive = false">ביטול</button>
                 </footer>
             </div>
 

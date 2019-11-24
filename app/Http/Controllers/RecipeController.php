@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Recipe;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,8 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        //
+        $liked = Recipe::find(Like::whereUserId(auth()->id())->get(['likeable_id'])->values())->pluck('id');
+        return view('recipes.show', compact('recipe', 'liked'));
     }
 
     /**

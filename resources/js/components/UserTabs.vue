@@ -1,6 +1,13 @@
 <template>
     <div class="user-tabs">
-            <button class="tafrit" @click="showBar">{{menuButtonValue}}</button>
+        <div class="field is-grouped tafrit">
+            <p class="control">
+                <button class="button is-small is-outlined is-info" @click="showBar">{{menuButtonValue}}</button>
+            </p>
+            <p class="control">
+                <button class="button is-small is-outlined is-info" @click="logout">התנתקות</button>
+            </p>
+        </div>
             <b-tabs position="is-centered" class="block" v-if="show" @input="showLikedRecipes">
                 <b-tab-item label="מתכונים שלי">
                     המתכונים שיצרתי
@@ -43,6 +50,12 @@
                 axios.get('/liked-recipes').then(({data}) => {
                    this.likedRecipes = data;
                 });
+            },
+
+            logout(){
+                axios.post('/logout').then(() => {
+                    location.reload()
+                })
             }
         }
     }
